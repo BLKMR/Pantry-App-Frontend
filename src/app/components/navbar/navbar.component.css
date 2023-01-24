@@ -1,0 +1,9 @@
+.navbar {
+    padding: 05px;
+    display: flex;
+    flex-direction: horizontal;
+    align-items: flex-start;
+    width: fit-content;
+    height: fit-content;
+    background-color: aquamarine;
+  }

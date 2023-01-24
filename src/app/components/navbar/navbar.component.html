@@ -1,0 +1,30 @@
+<div class="navbar">
+    <button
+      mat-button
+      color="primary"
+      (click)="
+      this.uiNav.showDashboard()">
+      Home
+    </button>
+  
+    <button
+    mat-button
+    color="primary" (click)="
+    this.uiNav.showViewPantry()">
+    View Pantry
+  </button>
+  
+    <button
+      mat-button
+      color="primary">
+      View Recipes
+    </button>
+
+    <button
+    mat-button
+    color="primary"
+    (click)="[this.uiNav.loggedIn = false, this.uiLogin.logout()]">
+    Logout
+  </button>
+  
+  </div>

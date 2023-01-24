@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavbarService } from './services/navbar.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'michael-blackmer-pantry-collab-2';
+
+  constructor(public uiNav: NavbarService) { }
+  
 }
