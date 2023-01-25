@@ -65,8 +65,8 @@ export class NavbarService {
     if(this.loggedIn === false){
       this.viewCreateItem = false;
     }
-    this.viewCreateItem = false;
-
+    this.viewCreateItem = true;
+    this.viewPantry = false;
   }
 
   public showCreateRecipe() {

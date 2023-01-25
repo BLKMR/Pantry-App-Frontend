@@ -14,7 +14,7 @@ export class FamilyService {
   public familyAccounts: Family [] = [];
   
   public accountFamilyName = ''
-  public familyAccount: Family = new Family(0, '', '', [], []);
+  public familyAccount = new BehaviorSubject<Family>(new Family(0, '', '', []));
   familyId = 0;
   familyName = '';
   familyPantry = '';
@@ -36,19 +36,19 @@ export class FamilyService {
     });
   }
 
-  public getFamilyByName(familyName: string){
-    this.http.getFamilyByFamilyName(familyName).pipe(take(1)).subscribe((res =>
+  public getPantryByName(familyName: string): void {
+    this.http.getFamilyByFamilyName(familyName)
+    .pipe(take(1))
+    .subscribe({
+      next: (fam) =>
       {
-        console.log(res + familyName)
-        if (res.length > 0) {
-          this.error(
-            `ERROR: '${this.accountFamilyName}' already exists in DB!`
-          );
-          console.log(res)
-          return;
+      console.log(this.familyAccount)
+      },
+      error: (err) => {
+        if (err.status === 404){
+          console.log("wtf")
         }
-      console.log('Family name not in DB');
-    }));
+      }});
   }
 
 
@@ -58,14 +58,12 @@ export class FamilyService {
       familyName: string,
       familyPantry: string,
       familyUsers: [],
-      familyRecipes:[],
     ) {
       let newFamily: Family ={
       id: familyId,
       name: familyName,
       pantry: familyPantry,
       userAccounts: familyUsers,
-      recipes: familyRecipes,
       }
       console.log("success")
       
@@ -94,7 +92,7 @@ export class FamilyService {
     }
     this.familyName = name;
     this.familyPantry = pantry;
-    this.createFamily(this.familyId, this.familyName, this.familyPantry, [], [])
+    this.createFamily(this.familyId, this.familyName, this.familyPantry, [])
 
 
   }

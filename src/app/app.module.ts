@@ -9,6 +9,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar'; 
 import { MatSort, MatSortModule } from '@angular/material/sort'; 
+import {MatTableModule} from '@angular/material/table';
+import {MatCardModule} from '@angular/material/card'; 
 import { MatIconModule } from '@angular/material/icon'; 
 
 import { AppComponent } from './app.component';
@@ -40,7 +42,9 @@ import { AddItemComponent } from './components/pantry/add-item/add-item.componen
     HttpClientModule,
     MatListModule,
     MatIconModule,
+    MatCardModule,
     MatSortModule,
+    MatTableModule,
     MatFormFieldModule,
     MatSnackBarModule,
     MatInputModule,

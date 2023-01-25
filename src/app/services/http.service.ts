@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Family} from '../data/Family';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from '../data/User';
-import { NavbarService } from './navbar.service';
-import { take } from 'rxjs';
+import { Item } from '../data/Item';
+
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +32,10 @@ export class HttpService {
 
   }
 
+  addItem(newItem: Item) {
+    return this.http.post<Item>("https://localhost:7160/api/Items", newItem)
+  }
+
   login(username: string, password: string) {
     return this.http.get<User>(`https://localhost:7160/api/Users/${username}/${password}`)
   }
@@ -46,7 +50,7 @@ export class HttpService {
   }
 
   getFamilyByFamilyName(familyName: string){
-    return this.http.get<Family[]>(`https://localhost:7160/api/FamilyAccount/${familyName}`)
+    return this.http.get<Family>(`https://localhost:7160/api/Families/${familyName}`)
   }
 
 

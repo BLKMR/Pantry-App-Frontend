@@ -4,6 +4,5 @@ export class Family{
         public name: string,
         public pantry: string,
         public userAccounts: [],
-        public recipes: [],
     ){}
 }
