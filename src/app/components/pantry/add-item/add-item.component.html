@@ -34,6 +34,6 @@
     (click)="this.uiItem.addItem(
         itemId, itemName, itemImage, calories, weight, quantity, pantryFamily
     )">Add Item</button>
-    <button mat-raised-button color="accent" type="button" >Cancel</button>
+    <button mat-raised-button color="accent" type="button" (click)="this.uiNav.showViewPantry()" >Cancel</button>
 </div>
 </form>

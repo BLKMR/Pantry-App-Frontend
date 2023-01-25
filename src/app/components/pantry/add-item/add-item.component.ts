@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FamilyService } from 'src/app/services/family.service';
 import { ItemService } from 'src/app/services/item.service';
 import { LoginService } from 'src/app/services/login.service';
+import { NavbarService } from 'src/app/services/navbar.service';
 
 @Component({
   selector: 'app-add-item',
@@ -10,7 +11,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class AddItemComponent implements OnInit{
 
-  constructor(public uiFam: FamilyService, public uiLogin: LoginService, public uiItem: ItemService){}
+  constructor(public uiFam: FamilyService, public uiLogin: LoginService, public uiItem: ItemService, public uiNav: NavbarService){}
 
   ngOnInit(): void {
     

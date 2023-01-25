@@ -34,6 +34,14 @@ export class NavbarService {
     this.viewCreateAccount = true;
   }
 
+  public showCreateItem() {
+    if(this.loggedIn === false){
+      this.viewCreateItem = false;
+      return;
+    }
+    this.viewCreateItem = true;
+  }
+
 
   public showCreateUser() {
     this.viewCreateUser = true;
@@ -61,13 +69,7 @@ export class NavbarService {
   }
 
 
-  public showCreateItem() {
-    if(this.loggedIn === false){
-      this.viewCreateItem = false;
-    }
-    this.viewCreateItem = true;
-    this.viewPantry = false;
-  }
+  
 
   public showCreateRecipe() {
     if(this.loggedIn === false){
@@ -90,7 +92,7 @@ export class NavbarService {
     this.viewPantry = true;
     
   }
-  
+
   public showViewLogin() {
     this.viewLogin = true;
   }
