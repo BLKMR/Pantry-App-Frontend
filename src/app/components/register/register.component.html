@@ -8,6 +8,10 @@
     Create Family
 </button>
 
+<button  mat-raised-button color="primary" class="create-button" style="margin-right: 10px;margin-left: 10px;" (click)="cancelToLogin()">
+    Return to Login
+</button>
+
 </div>
 
 <div *ngIf="this.uiNav.viewCreateUser === true">
@@ -37,7 +41,7 @@
     <button 
     mat-raised-button color="primary" 
     class="submit-button" 
-    (click)="uiUser.createUser(userId, userName, userPassword, familyLinked)">
+    (click)="uiUser.createUser(userId, userName, userPassword, familyLinked, userFamilyId)">
       Create User Account
     </button>
 

@@ -13,7 +13,7 @@ export class LoginService {
   constructor(private http: HttpService, public snackBar: MatSnackBar, public uiNav: NavbarService) { }
 
 
-  loggedUser: User = new User(0, '', '', '');
+  loggedUser: User = new User(0, '', '', '', 0);
   loginSuccess = false;
   username =  '';
   passowrd = '';

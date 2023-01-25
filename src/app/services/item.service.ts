@@ -29,9 +29,6 @@ export class ItemService {
 
 
 
-
-
-
   public addItem(
     itemId: number,
     itemName: string,
@@ -50,13 +47,15 @@ export class ItemService {
     quantity: quantity,
     pantryFamily: pantryFamily,
     }
+    console.log(pantryFamily)
 
     return this.http.addItem(newItem).pipe(take(1)).subscribe({
-      next: (item) =>{
+      next: () =>{
         this.error(`Item Added!`)
       },
       error: () => {
-        this.error("no work")
+        console.log(newItem)
+        this.error("Item already exists!")
       }});
     };
 

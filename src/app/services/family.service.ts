@@ -14,11 +14,10 @@ export class FamilyService {
   public familyAccounts: Family [] = [];
   
   public accountFamilyName = ''
-  public familyAccount = new BehaviorSubject<Family>(new Family(0, '', '', []));
+  public familyAccount = new BehaviorSubject<Family>(new Family(0, '', '',));
   familyId = 0;
   familyName = '';
   familyPantry = '';
-  familyUsers = [];
   familyRecipes = [];
 
   constructor(private http: HttpService, private snackBar: MatSnackBar) { }
@@ -57,13 +56,11 @@ export class FamilyService {
       familyId: number,
       familyName: string,
       familyPantry: string,
-      familyUsers: [],
     ) {
       let newFamily: Family ={
       id: familyId,
       name: familyName,
       pantry: familyPantry,
-      userAccounts: familyUsers,
       }
       console.log("success")
       
@@ -92,8 +89,7 @@ export class FamilyService {
     }
     this.familyName = name;
     this.familyPantry = pantry;
-    this.createFamily(this.familyId, this.familyName, this.familyPantry, [])
-
+    this.createFamily(this.familyId, this.familyName, this.familyPantry)
 
   }
 }

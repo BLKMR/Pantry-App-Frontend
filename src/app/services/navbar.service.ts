@@ -90,7 +90,7 @@ export class NavbarService {
     this.viewPantry = true;
     
   }
-
+  
   public showViewLogin() {
     this.viewLogin = true;
   }
@@ -102,20 +102,6 @@ export class NavbarService {
   public showViewCreateFamily() {
     this.viewCreateFamily = true;
   }
-
-  public showCreatedAccountSuccess() {
-    this.createUserSuccess = true;
-  }
-
-  public showCreatedRecipeSuccess() {
-    this.createRecipeSuccess = true;
-  }
-
-  public showCreatedFamilySuccess() {
-    this.createFamilySuccess = true;
-  }
-
-
 
 
 }

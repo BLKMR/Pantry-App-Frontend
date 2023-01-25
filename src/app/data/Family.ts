@@ -3,6 +3,5 @@ export class Family{
         public id: number | undefined | null,
         public name: string,
         public pantry: string,
-        public userAccounts: [],
     ){}
 }

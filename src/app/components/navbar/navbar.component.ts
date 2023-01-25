@@ -11,8 +11,6 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit, OnDestroy{
-  @Input() currentUser: User = new User(0, '', '', '')
-
   constructor(public uiFamily: FamilyService, public uiUser: UserService, public uiLogin: LoginService, public uiNav: NavbarService) 
   {}
 
@@ -21,7 +19,6 @@ ngOnInit(): void {
 }
 
 ngOnDestroy(): void {
-  this.currentUser.id = 0;
 }
 
 }

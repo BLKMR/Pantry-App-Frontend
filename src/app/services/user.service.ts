@@ -11,11 +11,12 @@ export class UserService {
 
   public userAccounts: User [] = [];
   public accountUserName = ''
-  public userAccount: User = new User(0, '', '', '');
+  public userAccount: User = new User(0, '', '', '', 0);
   userId = 0;
   userName = '';
   password = '';
   familyName = '';
+  familyId = 0;
 
   
 
@@ -30,8 +31,6 @@ export class UserService {
   }
 
   
-
-
   public error(message: string): void {
     this.snackBar.open(message, undefined, { duration: 1500 });
   }
@@ -49,12 +48,14 @@ export class UserService {
     userName: string,
     password: string,
     familyLinked: string,
+    familyId: number,
   ) {
     let newUser: User ={
     id: userId,
     name: userName,
     password: password,
     familyName: familyLinked,
+    familyId: familyId
     }
 
     return this.http.addUser(newUser).pipe(take(1)).subscribe({
@@ -81,7 +82,7 @@ export class UserService {
         return
       }
 
-      this.createUser(this.userId, username, password, familyName)
+      this.createUser(this.userId, username, password, familyName, this.familyId)
 
     }
 }
