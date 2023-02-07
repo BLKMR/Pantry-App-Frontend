@@ -17,6 +17,7 @@ export class NavbarService {
   public viewCreateAccount = false;
   public viewCreateUser = false;
   public viewCreateFamily = false;
+  public viewJoinOrCreateFamily = false;
   public viewLogin = true;
   public viewCreateRecipe = false;
   public viewCreateItem = false;
@@ -39,6 +40,10 @@ export class NavbarService {
       this.viewCreateItem = false;
       return;
     }
+    if(this.viewPantry === false){
+      this.viewCreateItem = false;
+      return;
+    }
     this.viewCreateItem = true;
   }
 
@@ -51,6 +56,12 @@ export class NavbarService {
   public showCreateFamily() {
     this.viewCreateFamily = true;
   }
+
+  public showJoinOrCreateFamily() {
+    this.viewJoinOrCreateFamily = true;
+  }
+
+
 
   public showDashboard() {
     this.viewRegister = false;

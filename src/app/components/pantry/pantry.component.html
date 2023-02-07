@@ -1,6 +1,67 @@
-<button  mat-raised-button color="primary" class="create-button" style="margin-right: 10px;margin-left: 10px;" (click)="this.uiNav.showCreateItem()">
-    Add Item
-</button>
+<div class="center">
 
-<app-add-item *ngIf="this.uiNav.viewCreateItem === true"></app-add-item>
+<!-- Add Item To Pantry-->
+ <mat-accordion class="example-headers-align">
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <h3 style="    display: flex;
+            height: 300px;
+            justify-content: center;
+            align-items: center;">Add Item to Pantry</h3>
+
+             <mat-icon>add</mat-icon>
+
+        </mat-expansion-panel-header>
+
+        
+        <mat-form-field  appearance="fill">
+            <mat-label>Item name</mat-label>
+            <input matInput [(ngModel)]="itemName" name="itemName" placeholder="Item Name"  required>
+        </mat-form-field><span style="margin-left: 10px;"></span>
+       
+    
+        <mat-form-field  appearance="fill">
+            <mat-label>Image URL</mat-label>
+            <input matInput [(ngModel)]="itemImage" name="itemImage" placeholder="Image URL" required>
+        </mat-form-field><span style="margin-left: 10px;"></span>
+    
+    
+        <mat-form-field  appearance="fill">
+            <mat-label>Calories</mat-label>
+            <input matInput [(ngModel)]="calories" name="calories" placeholder="Calories" type="number" required>
+        </mat-form-field><br>
+        
+    
+        <mat-form-field  appearance="fill">
+            <mat-label>Weight</mat-label>
+            <input matInput [(ngModel)]="weight" name="weight" placeholder="Weight" type="number" required>
+        </mat-form-field><span style="margin-left: 10px;"></span>
+    
+        <mat-form-field appearance="fill">
+            <mat-label>Type of Measurement</mat-label>
+            <mat-select [(ngModel)]="measurement" name="measurement" placeholder="Measurement">
+              <mat-option *ngFor="let measurement of measurements" [value]="measurement">
+                {{ measurement }}
+              </mat-option>
+            </mat-select>
+            </mat-form-field>
+    
+    
+        <mat-form-field  appearance="fill">
+            <mat-label>Quantity</mat-label>
+            <input matInput [(ngModel)]="quantity" name="quantity" placeholder="Quantity" type="number" required>
+        </mat-form-field><br><br>
+      
+          <mat-action-row>
+            <button mat-button color="warn" (click)="this.uiItem.addItem(
+                itemId, itemName, itemImage, calories, weight, measurement, quantity, pantryId
+            )">Add Item</button>
+            <button mat-button color="primary" (click)="clearItemFields()">Cancel</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      
+      </mat-accordion>
+     
+
+</div>
 

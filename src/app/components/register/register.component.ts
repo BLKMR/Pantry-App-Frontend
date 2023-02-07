@@ -20,7 +20,6 @@ export class RegisterComponent implements OnInit {
 
   familyId = 0;
   familyName = '';
-  familyPantry = '';
   familyUsers ?= [];
   familyRecipes ?= [];
 
@@ -28,7 +27,7 @@ export class RegisterComponent implements OnInit {
   userName = '';
   userPassword = '';
   familyLinked ='';
-  userFamilyId = 0;
+  userFamilyId: number | null | undefined
 
   public toggleCreateUser() {
     if (this.uiNav.viewCreateUser === true) {
@@ -45,7 +44,6 @@ export class RegisterComponent implements OnInit {
     if (this.uiNav.viewCreateFamily === true) {
       this.uiNav.viewCreateFamily = false;
       this.familyName = '';
-      this.familyPantry = '';
       return;
     }
     this.uiNav.viewCreateFamily = true;
@@ -57,7 +55,6 @@ export class RegisterComponent implements OnInit {
       this.uiNav.viewCreateAccount = false;
       this.uiNav.viewLogin = true
       this.familyName = '';
-      this.familyPantry = '';
       this.userName = '';
       this.userPassword = '';
       this.familyLinked = '';

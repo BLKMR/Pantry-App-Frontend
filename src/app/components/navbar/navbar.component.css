@@ -1,9 +1,23 @@
 .navbar {
     padding: 05px;
     display: flex;
-    flex-direction: horizontal;
+    flex-direction: row;
     align-items: flex-start;
     width: fit-content;
     height: fit-content;
     background-color: aquamarine;
   }
+
+  .icon {
+    padding: 0 14px;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .title {
+      display: flex;
+      margin: 0 auto;
+  }
+  

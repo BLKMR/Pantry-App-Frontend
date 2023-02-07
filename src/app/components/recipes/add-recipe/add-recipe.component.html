@@ -1,0 +1,53 @@
+<div class="center">
+
+    <!-- Add Item To Pantry-->
+     <mat-accordion class="example-headers-align">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <h3 style="    display: flex;
+                height: 300px;
+                justify-content: center;
+                align-items: center;">Add Item to Pantry</h3>
+    
+                 <mat-icon>add</mat-icon>
+    
+            </mat-expansion-panel-header>
+    
+            
+            <mat-form-field  appearance="fill">
+                <mat-label>Item name</mat-label>
+                <input matInput [(ngModel)]="recipeName" name="itemName" placeholder="Item Name"  required>
+            </mat-form-field><span style="margin-left: 10px;"></span>
+           
+        
+            <mat-form-field  appearance="fill">
+                <mat-label>Image URL</mat-label>
+                <input matInput [(ngModel)]="recipeImage" name="itemImage" placeholder="Image URL" required>
+            </mat-form-field><span style="margin-left: 10px;"></span>
+        
+           
+        
+            <mat-form-field  appearance="fill">
+                <mat-label>Weight</mat-label>
+                <input matInput [(ngModel)]="weight" name="weight" placeholder="Weight" type="number" required>
+            </mat-form-field><span style="margin-left: 10px;"></span>
+        
+        
+        
+            <mat-form-field  appearance="fill">
+                <mat-label>Quantity</mat-label>
+                <input matInput [(ngModel)]="quantity" name="quantity" placeholder="Quantity" type="number" required>
+            </mat-form-field><br><br>
+          
+              <mat-action-row>
+                <button mat-button color="warn" >Add Item</button>
+                <button mat-button color="primary">Cancel</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          
+          </mat-accordion>
+         
+    
+    </div>
+    
+    

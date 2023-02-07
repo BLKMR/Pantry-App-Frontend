@@ -11,7 +11,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSort, MatSortModule } from '@angular/material/sort'; 
 import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card'; 
-import { MatIconModule } from '@angular/material/icon'; 
+import { MatIconModule } from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,7 +25,10 @@ import { RecipesComponent } from './components/recipes/recipes.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NavbarService } from './services/navbar.service';
 import { PantryComponent } from './components/pantry/pantry.component';
-import { AddItemComponent } from './components/pantry/add-item/add-item.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AddRecipeComponent } from './components/recipes/add-recipe/add-recipe.component';
+
+
 
 
 @NgModule({
@@ -34,15 +40,19 @@ import { AddItemComponent } from './components/pantry/add-item/add-item.componen
     RecipesComponent,
     NavbarComponent,
     PantryComponent,
-    AddItemComponent
+    DashboardComponent,
+    AddRecipeComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatMenuModule,
+    MatToolbarModule,
     MatListModule,
     MatIconModule,
     MatCardModule,
+    MatExpansionModule,
     MatSortModule,
     MatTableModule,
     MatFormFieldModule,

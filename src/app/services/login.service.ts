@@ -13,12 +13,13 @@ export class LoginService {
   constructor(private http: HttpService, public snackBar: MatSnackBar, public uiNav: NavbarService) { }
 
 
-  loggedUser: User = new User(0, '', '', '', 0);
+  public loggedUser: User = new User(0, '', '', '', 0);
   loginSuccess = false;
-  username =  '';
+  public username =  '';
   passowrd = '';
-  userId: number | undefined | null
-  userFamily = '';
+  public userId: number | undefined | null
+  public userFamily: string | undefined | null;
+  public userFamilyId: number | undefined | null;
 
 
   public error(message: string): void {
@@ -38,18 +39,34 @@ export class LoginService {
     this.SubmitLogin(username, password)
   }
 
+
   public SubmitLogin(username: string, password: string){
     this.http.login(username, password).pipe(take(1)).subscribe({
       next: user => {
         this.userId = user.id;
         this.username = user.name;   
-        this.userFamily = user.familyName
+        this.userFamily = user.familyName;
+        this.userFamilyId = user.familyId
+        this.loggedUser = user;
         this.uiNav.loggedIn = true;
         console.log("user found, login successful")
-        console.log(user)
+        console.log(user);
+        console.log(this.username);
       },
       error: (err) => {
         this.error('Email/Password incorrect')
+      }
+    })
+  }
+
+  public getCurrentUser(userName: string){
+    this.http.getUserByName(userName).pipe(take(1)).subscribe({
+      next: currentUser => {
+        this.loggedUser = currentUser;
+        console.log('this worked' + this.loggedUser);   
+      },
+      error: (err) => {
+        this.error('Did not get current user' + this.loggedUser);
       }
     })
   }
@@ -58,6 +75,17 @@ export class LoginService {
       this.userId = 0;
       this.username = '';
       this.userFamily = '';
+      this.userFamilyId
+      this.uiNav.viewRegister = false;
+      this.uiNav.viewCreateAccount = false;
+      this.uiNav.viewCreateUser = false;
+      this.uiNav.viewCreateFamily = false;
+      this.uiNav.viewLogin = true;
+      this.uiNav.viewCreateRecipe = false;
+      this.uiNav.viewCreateItem = false;
+      this.uiNav.viewDashboard = false;
+      this.uiNav.viewPantry = false;
+      this.uiNav.viewRecipes = false;
     }
     
   }

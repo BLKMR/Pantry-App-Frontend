@@ -19,8 +19,9 @@ export class ItemService {
    itemImage = '';
    calories = 0;
    weight = 0;
+   measurement = '';
    quantity = 0;
-   pantryName = '';
+   pantryId = 0;
 
 
   public error(message: string): void {
@@ -35,8 +36,9 @@ export class ItemService {
     itemImage: string,
     calories: number,
     weight: number,
+    measurement: string,
     quantity: number,
-    pantryFamily: string,
+    pantryId: number | undefined | null,
   ) {
     let newItem: Item ={
     id: itemId,
@@ -44,12 +46,38 @@ export class ItemService {
     image: itemImage,
     calories: calories,
     weight: weight,
+    measurement: measurement,
     quantity: quantity,
-    pantryFamily: pantryFamily,
+    pantryId: pantryId,
     }
-    console.log(pantryFamily)
+    console.log(pantryId)
 
-    return this.http.addItem(newItem).pipe(take(1)).subscribe({
+    if (itemName === '' || itemName === null){
+      this.error('Please enter an Item Name');
+      return;
+    }
+    if (itemImage === '' || itemImage === null){
+      this.error('Please enter an image URL');
+      return;
+    }
+    if (calories === 0 || calories === null){
+      this.error('Please enter a value in the Calories field');
+      return;
+    }
+    if (weight === 0 || weight === null){
+      this.error('Please enter an image URL');
+      return;
+    }
+    if (measurement === '' || measurement === null){
+      this.error('Please select a proper measurement');
+      return;
+    }
+    if (quantity === 0 || quantity === null){
+      this.error('Please enter a value greater than 0 in the quantity field');
+      return;
+    }
+
+    this.http.addItem(newItem).pipe(take(1)).subscribe({
       next: () =>{
         this.error(`Item Added!`)
       },

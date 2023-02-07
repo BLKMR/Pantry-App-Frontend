@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { take } from 'rxjs';
 import { User } from '../data/User';
 import { HttpService } from './http.service';
+import { NavbarService } from './navbar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class UserService {
   userName = '';
   password = '';
   familyName = '';
-  familyId = 0;
+  familyId = null;
 
   
 
@@ -24,7 +25,7 @@ export class UserService {
 
   public createAccountSuccess = false;
 
-  constructor( private http: HttpService, private snackBar: MatSnackBar) {}
+  constructor( private http: HttpService, private snackBar: MatSnackBar, private uiNav: NavbarService) {}
 
   public getCreateAccountSuccess(): boolean {
     return this.createAccountSuccess;
@@ -48,7 +49,7 @@ export class UserService {
     userName: string,
     password: string,
     familyLinked: string,
-    familyId: number,
+    familyId: number | null | undefined,
   ) {
     let newUser: User ={
     id: userId,
@@ -61,14 +62,19 @@ export class UserService {
     return this.http.addUser(newUser).pipe(take(1)).subscribe({
       next: () =>{
         this.error("User Added!")
-      },
+      this.uiNav.viewCreateFamily = false;
+      this.uiNav.viewCreateUser = false;
+      this.uiNav.viewCreateAccount = false;
+      this.uiNav.viewLogin = true
+  },
       error: () => {
         this.error("Username exists")
       }});
     };
+
     
 
-    public validateUserCreation(username: string, password: string, familyName: string): void {
+    public validateUserCreation(username: string, password: string): void {
       if (username == '' || username == null) {
         this.error('Username Required')
         return
@@ -77,12 +83,8 @@ export class UserService {
         this.error('Password Required')
         return
       }
-      if (familyName == '' || familyName == null) {
-        this.error('Choose a Family Account or Create one prior.')
-        return
-      }
 
-      this.createUser(this.userId, username, password, familyName, this.familyId)
+      this.createUser(this.userId, username, password, this.familyName, this.familyId)
 
     }
 }

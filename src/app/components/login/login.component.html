@@ -1,4 +1,8 @@
 <div class="container">
+<h1 class="title">Welcome, to Too Many Cooks!</h1>
+<h5 class="title">Please, login below or get started by creating an account!</h5>
+
+  <div class="input-fields">
     <mat-form-field appearance="fill">
       <mat-label>Username</mat-label>
       <input type="username" matInput [(ngModel)]="username" placeholder="Username">
@@ -7,10 +11,13 @@
       <mat-label>Password*</mat-label>
       <input matInput type="password" [(ngModel)]="password">
     </mat-form-field><br>
+  </div>
+    <div class="flex-buttons">
     <button mat-raised-button color="primary" style="margin: 05px;"
       (click)="uiLogin.ValidateLogin(username, password)">Login
     </button>
     <button mat-raised-button color="primary" style="margin: 05px;"
     (click)="[this.uiNav.viewCreateAccount = true, this.uiNav.viewLogin = false]">Create Account
   </button>
+</div>
 </div>

@@ -32,9 +32,18 @@ export class HttpService {
 
   }
 
+  joinFamily(id: number, updatedUser: User) {
+    return this.http.put<User>(`https://localhost:7160/api/Users/${id}`, {...updatedUser})
+  }
+
   addItem(newItem: Item) {
     return this.http.post<Item>("https://localhost:7160/api/Items", newItem)
   }
+
+  /*getItems(){
+    return this.http.get<Item[]>(`https://localhost:7160/api/Items/${pantryId}`);
+  }
+  */
 
   login(username: string, password: string) {
     return this.http.get<User>(`https://localhost:7160/api/Users/${username}/${password}`)
@@ -49,8 +58,8 @@ export class HttpService {
     return this.http.get<User[]>("https://localhost:7160/api/Users")
   }
 
-  getFamilyByFamilyName(familyName: string){
-    return this.http.get<Family>(`https://localhost:7160/api/Families/${familyName}`)
+  getUserByName(userName: string){
+    return this.http.get<User>(`https://localhost:7160/api/Users/${userName}`)
   }
 
 

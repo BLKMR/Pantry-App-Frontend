@@ -1,9 +1,11 @@
-<div class="center">
+<body class="body">
 <app-navbar *ngIf="this.uiNav.loggedIn === true"></app-navbar>
-<app-login *ngIf="this.uiNav.loggedIn === false && this.uiNav.viewLogin === true"></app-login>
-<app-register *ngIf="this.uiNav.viewCreateAccount === true"></app-register>
-<app-pantry *ngIf="this.uiNav.viewPantry === true && this.uiNav.loggedIn === true"></app-pantry>
-
-
-
+<div class="main">
 </div>
+<app-login class="login" *ngIf="this.uiNav.loggedIn === false && this.uiNav.viewLogin === true"></app-login>
+<app-dashboard class="dashboard" *ngIf="this.uiNav.loggedIn === true"></app-dashboard>
+<app-register class="register" *ngIf="this.uiNav.viewCreateAccount === true"></app-register>
+<app-pantry class="pantry" *ngIf="this.uiNav.viewPantry === true && this.uiNav.loggedIn === true"></app-pantry>
+<app-recipes class="recipes" *ngIf="this.uiNav.viewRecipes === true && this.uiNav.loggedIn === true"></app-recipes>
+</body>
+

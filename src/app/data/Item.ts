@@ -7,7 +7,8 @@ export class Item{
         public image: string,
         public calories: number,
         public weight: number,
+        public measurement: string,
         public quantity: number,
-        public pantryFamily: string,
+        public pantryId: number | undefined | null,
     ){}
 }

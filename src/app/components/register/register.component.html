@@ -1,76 +1,38 @@
-<div>
-
-<button  mat-raised-button color="primary" class="create-button" style="margin-right: 10px;margin-left: 10px;" (click)="toggleCreateUser()">
-    Create User
-</button>
-
-<button  mat-raised-button color="primary" class="create-button" style="margin-right: 10px;margin-left: 10px;" (click)="toggleCreateFamily()">
-    Create Family
-</button>
-
-<button  mat-raised-button color="primary" class="create-button" style="margin-right: 10px;margin-left: 10px;" (click)="cancelToLogin()">
-    Return to Login
-</button>
-
-</div>
-
-<div *ngIf="this.uiNav.viewCreateUser === true">
-
-  <h3>Enter a Username</h3>
-  <mat-form-field appearance="fill" class="input">
-    <mat-label>Username</mat-label>
-    <input matInput [(ngModel)]="userName"/>
-  </mat-form-field>
-
-  <h3>Enter a Password</h3>
-  <mat-form-field appearance="fill" class="input">
-    <mat-label>Password</mat-label>
-    <input matInput [(ngModel)]="userPassword" />
-  </mat-form-field>
-
-  <h3>Select Associate Family</h3>
-  <mat-form-field appearance="fill">
-    <mat-label>Choose Account</mat-label>
-    <mat-select [(ngModel)]="familyLinked">
-      <mat-option *ngFor="let family of uiFamily.familyAccounts" [value]="family.name">
-        {{ family.name }}
-      </mat-option>
-    </mat-select>
+<div class="container" *ngIf="this.uiNav.viewCreateAccount === true">
+    <h4 class="center">Enter a Username</h4>
+    <mat-form-field appearance="fill" class="input">
+      <mat-label>Username</mat-label>
+      <input matInput [(ngModel)]="userName" />
     </mat-form-field>
 
-    <button 
-    mat-raised-button color="primary" 
-    class="submit-button" 
-    (click)="uiUser.createUser(userId, userName, userPassword, familyLinked, userFamilyId)">
-      Create User Account
+    <h4 class="center">Enter a Password</h4>
+    <mat-form-field appearance="fill" class="input">
+      <mat-label>Password</mat-label>
+      <input type="password"matInput [(ngModel)]="userPassword" />
+    </mat-form-field>
+
+    <div class="center">
+      <button
+      mat-raised-button
+      color="primary"
+      class="button"
+      (click)="
+        uiUser.validateUserCreation(
+          userName,
+          userPassword)
+      "
+    >
+      Create Account
     </button>
 
-<h3>Family not listed? Click the button below to create a family.</h3>
-<button mat-raised-button color="primary" class="create-button" (click)="toggleCreateFamily()">
-    Create Family
-</button>
-
-</div>
-
-
-<div *ngIf="this.uiNav.viewCreateFamily === true">
-  <h3>Enter a name for this Family Account</h3>
-  <mat-form-field appearance="fill" class="input">
-    <mat-label>Family Account Name</mat-label>
-    <input matInput [(ngModel)]="familyName" />
-  </mat-form-field>
-
-  <h3>Enter a name for this Family's Pantry</h3>
-  <mat-form-field appearance="fill" class="input">
-    <mat-label>Name of Pantry for Family</mat-label>
-    <input matInput [(ngModel)]="familyPantry" />
-  </mat-form-field>
-
-  <button 
-  mat-raised-button color="primary" 
-  class="submit-button" 
-  (click)="uiFamily.validateFamilyCreation(familyName, familyPantry)">
-    Click here to Register new family!
-  </button>
+    <button
+      mat-raised-button
+      color="primary"
+      class="button"
+      (click)="cancelToLogin()"
+    >
+      Return to Login
+    </button>
+  </div>
 </div>
 

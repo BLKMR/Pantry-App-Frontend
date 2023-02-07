@@ -1,0 +1,51 @@
+<div class="createFamily" *ngIf="this.uiNav.viewCreateFamily === true">
+<h3>You don't have a family!</h3>
+<h4>But you can join one or create a family here!</h4>
+    <h3>Join a Family</h3>
+    <mat-form-field appearance="fill">
+      <mat-label>Family</mat-label>
+      <mat-select [(ngModel)]="familyName">
+        <mat-option *ngFor="let family of this.uiFam.familyAccounts" [value]="family.name">
+          {{ family.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button 
+    mat-raised-button color="primary" 
+    class="submit-button" 
+    (click)="this.uiFamily.joinFamily(this.currentUser.id, this.currentUser, this.familyName)">
+      Join
+    </button>
+
+
+<div *ngIf="this.uiFam.familyRegistered  === false">
+<h3>Create a Family</h3>
+<button mat-raised-button color="primary" class="create-button" (click)="toggleCreateFamily()">
+    Create Family
+</button>
+</div>
+
+
+
+<div class="createFamily"  *ngIf="this.uiNav.viewJoinOrCreateFamily === true">
+  <h3>Enter a name for this Family Account</h3>
+  <mat-form-field appearance="fill" class="input">
+    <mat-label>Family Account Name</mat-label>
+    <input matInput [(ngModel)]="familyName" />
+  </mat-form-field>
+
+
+
+  <button 
+  mat-raised-button color="primary" 
+  class="submit-button" 
+  (click)="uiFamily.validateFamilyCreation(familyName)">
+    Click here to register your family!
+  </button>
+
+
+</div>
+</div>
+
+
